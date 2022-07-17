@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import image from '../image/financialControl.png'
 import style from '../style/Login.module.css';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
     const [email, setEmail] = useState([]);
     const [password, setPassword] = useState([]);
+    const navigate = useNavigate();
 
     const handleChange = ({ target }) => {
         if (target.name === 'email') {
@@ -14,17 +16,21 @@ function Login() {
         }
     }
 
-    const isDisable = () => {
-        const SIX = 6;
-        let button = true;
-        if (email.includes('@') && email.includes('.com') && password.length > SIX) {
-            button = false;
-        } return button;
-    };
+    // const isDisabled = () => {
+    //     const six = 6;
+    //     let button = true;
+    //     if (email.includes('@')
+    //       && email.includes('.com')
+    //       && password.length > six) {
+    //       button = false;
+    //     }
+    //     return button;
+    //   };
 
     const onClick = () => {
         localStorage.setItem('email', JSON.stringify({ email }));
         localStorage.setItem('password', JSON.stringify({ password }));
+        navigate('/wallet');
     };
 
     return (
@@ -48,9 +54,10 @@ function Login() {
                 </input>
             </form>
             <button
+                name="button"
                 type="button"
-                // disabled={isDisable()}
-                onClick={onClick}
+                // disabled={ isDisabled() }
+                onClick={ onClick }
             >
                 Enter
             </button>
@@ -59,3 +66,4 @@ function Login() {
 }
 
 export default Login;
+

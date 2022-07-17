@@ -6,9 +6,23 @@ function Provider({ children }) {
     const [data, setData] = useState([]);
     const [email, setEmail] = useState([]);
     const [senha, setSenha] = useState([]);
+    const [id, setId ] = useState([]);
+    const [value, setValue] = useState([]);
+    const [description, setDescription] = useState([]);
+    const [currency, setCurrency] = useState(['USD']);
+    const [method, setMethod] = useState(['Dinheiro']);
+    const [tag, setTag] = useState(['Alimentação']);
 
     const allData = {
-        data, setData, senha, setSenha, email, setEmail
+        data, setData,
+        senha, setSenha,
+        email, setEmail,
+        id, setId,
+        value, setValue,
+        description, setDescription,
+        currency, setCurrency,
+        method, setMethod,
+        tag, setTag,
     }
     return (
         <Context.Provider value={ allData }>
