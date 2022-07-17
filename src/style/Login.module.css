@@ -1,0 +1,22 @@
+.login {
+    display: inline-block;
+    align-items: center;
+}
+
+.title {
+    /* display: inline-block; */
+    display: flex;
+    /* align-content: center; */
+    /* align-items: center; */
+}
+
+.img {
+    display: flex;
+    /* align-content: center; */
+}
+
+.input {
+    display: flex;
+    margin: 10px;
+    border-radius: 5px;
+}

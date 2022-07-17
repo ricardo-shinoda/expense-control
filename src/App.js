@@ -1,12 +1,16 @@
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Login from './pages/Login';
 import Component from './components/Component';
 
-function App() {
+export default function App() {
   return (
     <div>
-      <h1>Expense Control</h1>
-      <Component />
+      <Routes>
+        <Route exact path="/" element={<Login />} />
+        <Route path="/component" element={<Component />} />
+      </Routes>
     </div>
   );
 }
 
-export default App;

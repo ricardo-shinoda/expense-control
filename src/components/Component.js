@@ -7,7 +7,7 @@ function Api() {
     return (
         <div>
             <h2>Testando os dados da api</h2>
-            <p>{data.code}</p>
+            <p>{data}</p>
         </div>
 )};
 
