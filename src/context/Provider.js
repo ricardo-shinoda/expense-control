@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 function Provider({ children }) {
     const [data, setData] = useState([]);
     const [email, setEmail] = useState([]);
-    const [senha, setSenha] = useState([]);
+    const [password, setPassword] = useState([]);
     const [id, setId ] = useState([]);
     const [value, setValue] = useState([]);
     const [description, setDescription] = useState([]);
@@ -15,7 +15,7 @@ function Provider({ children }) {
 
     const allData = {
         data, setData,
-        senha, setSenha,
+        password, setPassword,
         email, setEmail,
         id, setId,
         value, setValue,

@@ -1,31 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import image from '../image/financialControl.png'
 import style from '../style/Login.module.css';
 import { useNavigate } from 'react-router-dom';
+import context from '../context/Context';
 
 function Login() {
-    const [email, setEmail] = useState([]);
+    const {email, setEmail} = useContext(context);
     const [password, setPassword] = useState([]);
     const navigate = useNavigate();
-
-    const handleChange = ({ target }) => {
-        if (target.name === 'email') {
-            setEmail(target.value);
-        } else {
-            setPassword(target.value);
-        }
-    }
-
-    // const isDisabled = () => {
-    //     const six = 6;
-    //     let button = true;
-    //     if (email.includes('@')
-    //       && email.includes('.com')
-    //       && password.length > six) {
-    //       button = false;
-    //     }
-    //     return button;
-    //   };
 
     const onClick = () => {
         localStorage.setItem('email', JSON.stringify({ email }));
@@ -40,23 +22,22 @@ function Login() {
                 <img className={style.img} height='60px' alt="imagem" src={image} />
                 <input
                     className={style.input}
-                    onChange={handleChange}
                     type="email"
                     placeholder="Digite seu email"
+                    onChange={(e) => setEmail(e.target.value)}
                 >
                 </input>
                 <input
                     className={style.input}
                     type="password"
                     placeholder="Digite sua senha"
-                    onChange={handleChange}
+                    onChange={(e) => setPassword(e.target.value)}
                 >
                 </input>
             </form>
             <button
                 name="button"
                 type="button"
-                // disabled={ isDisabled() }
                 onClick={ onClick }
             >
                 Enter
