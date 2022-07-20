@@ -1,18 +1,24 @@
 .login {
     display: inline-block;
-    align-items: center;
-    color: rgb(238, 237, 164);
+    align-content: center;
+    color: black;
+    background-color: white;
+    border: solid 3px black;
+    margin: 350px;
+    padding: 30px;
 }
 
 .title {
     /* display: inline-block; */
-    display: flex;
+    display: inline-block;
+    padding-bottom: 20px;
     /* align-content: center; */
     /* align-items: center; */
 }
 
 .img {
     display: flex;
+    padding-bottom: 20px;
     /* align-content: center; */
 }
 
@@ -20,4 +26,17 @@
     display: flex;
     margin: 10px;
     border-radius: 5px;
+}
+
+.button {
+    padding: 5px;
+    width: 180px;
+    background-color: rgb(148, 146, 146);
+    display: inline-block;
+}
+
+.button:hover {
+    background-color: rgb(61, 219, 61);
+    font-size: large;
+    width: 190px;
 }
