@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Login from './pages/Login';
-import Wallet from './pages/wallet';
+import Wallet from './pages/Wallet';
 import style from './style/App.module.css';
 
 export default function App() {
