@@ -1,9 +1,10 @@
 const data = async () => {
-    const URL = await fetch('https://economia.awesomeapi.com.br/json/all');
-    const URLJson = await URL.json();
+    const url = await fetch('https://economia.awesomeapi.com.br/json/all');
+    const urlJson = await url.json();
     // return URLJson;
-    const URLJsonArr = Object.keys(URLJson).filter((val) => val !== 'USDT');
-    return URLJsonArr;
+    const urlArr = Object.keys(urlJson).filter((val) => val !== 'USDT');
+    return urlArr;
+    
 }
 
 export default data;

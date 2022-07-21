@@ -1,17 +1,16 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import context from '../context/Context';
 import style from '../style/Component.module.css';
 
 function Api() {
     const { data } = useContext(context);
-    const { currency, setCurrency } = useContext(context);
-    const currencies = data;
-
-    // ['UDS', 'USDT', 'CAD', 'GBP', 'ARS', 'BTC', 'LTC', 'EUR', 'JPY', 'CHF', 'AUD', 'CNY', 'ILS', 'EHT', 'XRP', 'DOGE']
     console.log(data);
+    const { currency, setCurrency } = useContext(context);
+    const [currencies] = useState(['USD', 'CAD', 'EUR']);
 
-    const handleChange = ({ target, name }) => {
-        setCurrency({ [name]: target.value })
+
+    const handleChange = ({ target }) => {
+        setCurrency(target.value)
     }
 
     return (
@@ -30,8 +29,8 @@ function Api() {
                     <select
                         id="moeda"
                         name="currency"
-                        value={currency}
-                        onChange={handleChange}
+                        value={ currency }
+                        onChange={ handleChange }
                     >
                         {currencies.map((cur) => <option key={cur}>{cur}</option>)}
                     </select>
