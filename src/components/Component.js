@@ -1,12 +1,20 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import context from '../context/Context';
 import style from '../style/Component.module.css';
 
 function Api() {
-    const { data } = useContext(context);
-    console.log(data);
     const { currency, setCurrency } = useContext(context);
-    const [currencies] = useState(['USD', 'CAD', 'EUR']);
+    const [currencies, setCurrencies ] = useState([]);
+
+    useEffect(() => {
+        const data = async () => {
+            const url = await fetch('https://economia.awesomeapi.com.br/json/all');
+            const urlJson = await url.json();
+            const urlArr = Object.keys(urlJson).filter((val) => val !== 'USDT');
+            setCurrencies(urlArr);
+        };
+        data();
+    }, []);
 
 
     const handleChange = ({ target }) => {
