@@ -4,7 +4,7 @@ import style from '../style/Component.module.css';
 
 function Api() {
     const { currency, setCurrency } = useContext(context);
-    const [currencies, setCurrencies ] = useState([]);
+    const [currencies, setCurrencies] = useState([]);
 
     useEffect(() => {
         const data = async () => {
@@ -37,8 +37,8 @@ function Api() {
                     <select
                         id="moeda"
                         name="currency"
-                        value={ currency }
-                        onChange={ handleChange }
+                        value={currency}
+                        onChange={handleChange}
                     >
                         {currencies.map((cur) => <option key={cur}>{cur}</option>)}
                     </select>
@@ -61,13 +61,73 @@ function Api() {
             <section>
                 <label>Descrição
                     <input
-                    type="text">
+                        type="text">
                     </input>
                 </label>
             </section>
             <section>
                 <button>Adicionar despesa</button>
             </section>
+            <form>
+                <label
+                    htmlFor="description"
+                    data-testid="description-input"
+                >
+                    Descrição
+                </label>
+                <label
+                    htmlFor="tag"
+                    data-testid="tag-input"
+                >
+                    Tag
+                    <select>
+                        <option>Alimentação</option>
+                        <option>Lazer</option>
+                        <option>Trabalho</option> 
+                        <option>Transporte</option>
+                        <option>Saúde</option>
+                    </select>
+                </label>
+                <label
+                    htmlFor="payment-method"
+                    data-testid="method-input"
+                >
+                    Método de pagamento
+                    <select>
+                        <option>Dinheiro</option>
+                        <option>Cartão de crédito</option>
+                        <option>Cartão de débito</option>
+                    </select>
+                </label>
+                <label
+                    htmlFor="value"
+                    data-testid="value-input"
+                >
+                    Valor
+                </label>
+                <label
+                    htmlFor="currency"
+                >Moeda
+                    <select>
+                        { currencies.map((cur) => <option key={cur}>{cur}</option>) }
+                    </select>
+                </label>
+                <label
+                    htmlFor="exchange"
+                >
+                    Câmbio utilizado
+                </label>
+                <label
+                    htmlFor="exchange-value"
+                >
+                    Valor convertido
+                </label>
+                <label
+                    htmlFor="exchange-rate"
+                >
+                    Moeda de conversão
+                </label>
+            </form>
         </div>
     )
 };
