@@ -3,8 +3,14 @@ import context from '../context/Context';
 import style from '../style/Component.module.css';
 
 function Api() {
+    const { id, setId } = useContext(context);
+    const { value, setValue } = useContext(context);
+    const { description, setDescription } = useContext(context);
+    const { method, setMethod } = useContext(context);
+    const { tag, setTag } = useContext(context);
     const { currency, setCurrency } = useContext(context);
     const [currencies, setCurrencies] = useState([]);
+    const [rate, setRate] = useState([]);
 
     useEffect(() => {
         const data = async () => {
@@ -16,9 +22,30 @@ function Api() {
         data();
     }, []);
 
+    useEffect(() => {
+        const rate = async () => {
+            const url = await fetch('https://economia.awesomeapi.com.br/json/all');
+            const urlJson = await url.json();
+            const urlRate = Object.keys.bind(urlJson);
+            setRate(urlRate)
+        };
+        rate();
+    }, [id])
 
-    const handleChange = ({ target }) => {
-        setCurrency(target.value)
+
+    const handleValChange = ({ target }) => {setValue(target.value)}
+    const handleCurChange = ({ target }) => {setCurrency(target.value)}
+    const handleMetChange = ({ target }) => {setMethod(target.value)}
+    const handleCatChange = ({ target }) => {setTag(target.value)}
+    const handleDescChange = ({ target }) => {setDescription(target.value)}
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        if (id.length < 1) {
+            setId(0)
+        } else (
+            setId(id + 1)
+        )
     }
 
     return (
@@ -31,6 +58,7 @@ function Api() {
                     Valor
                     <input
                         type="number"
+                        onChange={handleValChange}
                         name="value"
                         id="value"
                     ></input>
@@ -38,13 +66,15 @@ function Api() {
                 <label
                     htmlFor="currency"
                 >Moeda
-                    <select>
+                    <select
+                        onChange={handleCurChange}>
                         {currencies.map((cur) => <option key={cur}>{cur}</option>)}
                     </select>
                 </label>
                 <label
                     htmlFor="payment-method"
                     data-testid="method-input"
+                    onChange={handleMetChange}
                 >
                     Método de pagamento
                     <select>
@@ -56,6 +86,7 @@ function Api() {
                 <label
                     htmlFor="tag"
                     data-testid="tag-input"
+                    onChange={handleCatChange}
                 >
                     Categoria
                     <select>
@@ -69,6 +100,7 @@ function Api() {
                 <label
                     htmlFor="description"
                     data-testid="description-input"
+                    onChange={handleDescChange}
                 >
                     Descrição
                     <input
@@ -77,7 +109,11 @@ function Api() {
                     </input>
                 </label>
                 <section>
-                    <button>Adicionar despesa</button>
+                    <button
+                        onClick={handleClick}
+                    >
+                        Adicionar despesa
+                    </button>
                 </section>
             </form>
         </div>
