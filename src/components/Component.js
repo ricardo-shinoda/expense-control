@@ -23,69 +23,23 @@ function Api() {
 
     return (
         <div className={style.Component}>
-            <section>
-                <label htmlFor="value">Valor
+            <form>
+                <label
+                    htmlFor="value"
+                    data-testid="value-input"
+                >
+                    Valor
                     <input
                         type="number"
                         name="value"
                         id="value"
-                    />
+                    ></input>
                 </label>
-            </section>
-            <section>
-                <label htmlFor="currency">Moeda
-                    <select
-                        id="moeda"
-                        name="currency"
-                        value={currency}
-                        onChange={handleChange}
-                    >
+                <label
+                    htmlFor="currency"
+                >Moeda
+                    <select>
                         {currencies.map((cur) => <option key={cur}>{cur}</option>)}
-                    </select>
-                </label>
-            </section>
-            <section>
-                <label>Método de pagamento
-                    <select>
-
-                    </select>
-                </label>
-            </section>
-            <section>
-                <label>Tag
-                    <select>
-
-                    </select>
-                </label>
-            </section>
-            <section>
-                <label>Descrição
-                    <input
-                        type="text">
-                    </input>
-                </label>
-            </section>
-            <section>
-                <button>Adicionar despesa</button>
-            </section>
-            <form>
-                <label
-                    htmlFor="description"
-                    data-testid="description-input"
-                >
-                    Descrição
-                </label>
-                <label
-                    htmlFor="tag"
-                    data-testid="tag-input"
-                >
-                    Tag
-                    <select>
-                        <option>Alimentação</option>
-                        <option>Lazer</option>
-                        <option>Trabalho</option> 
-                        <option>Transporte</option>
-                        <option>Saúde</option>
                     </select>
                 </label>
                 <label
@@ -100,33 +54,31 @@ function Api() {
                     </select>
                 </label>
                 <label
-                    htmlFor="value"
-                    data-testid="value-input"
+                    htmlFor="tag"
+                    data-testid="tag-input"
                 >
-                    Valor
-                </label>
-                <label
-                    htmlFor="currency"
-                >Moeda
+                    Categoria
                     <select>
-                        { currencies.map((cur) => <option key={cur}>{cur}</option>) }
+                        <option>Alimentação</option>
+                        <option>Lazer</option>
+                        <option>Trabalho</option>
+                        <option>Transporte</option>
+                        <option>Saúde</option>
                     </select>
                 </label>
                 <label
-                    htmlFor="exchange"
+                    htmlFor="description"
+                    data-testid="description-input"
                 >
-                    Câmbio utilizado
+                    Descrição
+                    <input
+                        type="texto"
+                    >
+                    </input>
                 </label>
-                <label
-                    htmlFor="exchange-value"
-                >
-                    Valor convertido
-                </label>
-                <label
-                    htmlFor="exchange-rate"
-                >
-                    Moeda de conversão
-                </label>
+                <section>
+                    <button>Adicionar despesa</button>
+                </section>
             </form>
         </div>
     )

@@ -5,10 +5,6 @@ import Header from '../components/Header';
 
 function wallet() {
 
-    // const onClick = () => {
-    //     localStorage.getItem('email', JSON.stringify({ email }));
-    // };
-
     return (
         <div>
             <Header />
