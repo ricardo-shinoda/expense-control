@@ -39,14 +39,21 @@ function Api() {
     const handleCatChange = ({ target }) => {setTag(target.value)}
     const handleDescChange = ({ target }) => {setDescription(target.value)}
 
-    const handleClick = (e) => {
+    const onClick = (e) => {
         e.preventDefault();
-        if (id.length < 1) {
-            setId(0)
-        } else (
-            setId(id + 1)
-        )
+        setId(id + 1);
+        value('');
+        currency('USD');
+        method('Dinheiro');
+        tag('Alimentação');
+        description(['']);        
     }
+
+   const handleReset = () => {
+    Array.from(document.querySelectorAll('input')).forEach(
+        input => (input.value = '')
+    );
+   }
 
     return (
         <div className={style.Component}>
@@ -58,7 +65,8 @@ function Api() {
                     Valor
                     <input
                         type="number"
-                        onChange={handleValChange}
+                        onChange={ handleValChange }
+                        onClick={ handleReset }
                         name="value"
                         id="value"
                     ></input>
@@ -110,7 +118,7 @@ function Api() {
                 </label>
                 <section>
                     <button
-                        onClick={handleClick}
+                        onClick={onClick}
                     >
                         Adicionar despesa
                     </button>

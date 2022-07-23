@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import Context from './Context';
 import PropTypes from 'prop-types';
 
@@ -6,7 +6,7 @@ function Provider({ children }) {
     const [data, setData] = useState([]);
     const [email, setEmail] = useState([]);
     const [password, setPassword] = useState([]);
-    const [id, setId ] = useState([]);
+    const [id, setId ] = useState(-1);
     const [value, setValue] = useState([]);
     const [description, setDescription] = useState([]);
     const [currency, setCurrency] = useState(['USD']);
