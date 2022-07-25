@@ -4,9 +4,11 @@ import Context from '../context/Context';
 
 export default function Header() {
     const { email } = useContext(Context);
-    const [gastos, setGastos] = useState('0');
+    const [ gastos ] = useState('0')
     const [currency, setCurrency] = useState('BRL')
 
+
+  
     return (
         <div className={style.header}>
             <h1>Expense Control</h1>
@@ -17,7 +19,7 @@ export default function Header() {
             <p
                 data-testid="total-field"
             >
-                Despesa Total: {gastos}</p>
+                Despesa Total: { gastos }</p>
             <p
                 data-testid="header-currency-field"
                 name="currency"

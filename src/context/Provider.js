@@ -12,6 +12,7 @@ function Provider({ children }) {
     const [currency, setCurrency] = useState(['USD']);
     const [method, setMethod] = useState(['Dinheiro']);
     const [tag, setTag] = useState(['Alimentação']);
+    const [expense, setExpense] = useState([]);
 
     const allData = {
         data, setData,
@@ -23,7 +24,9 @@ function Provider({ children }) {
         currency, setCurrency,
         method, setMethod,
         tag, setTag,
+        expense, setExpense,
     }
+    
     return (
         <Context.Provider value={ allData }>
             { children }
