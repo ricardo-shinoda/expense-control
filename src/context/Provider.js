@@ -26,7 +26,7 @@ function Provider({ children }) {
         tag, setTag,
         expense, setExpense,
     }
-    
+
     return (
         <Context.Provider value={ allData }>
             { children }

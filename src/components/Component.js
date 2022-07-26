@@ -10,8 +10,9 @@ function Api() {
     const { tag, setTag } = useContext(context);
     const { currency, setCurrency } = useContext(context);
     const [currencies, setCurrencies] = useState([]);
-    const [rate, setRate] = useState([]);
-    const { gastos, setGastos } = useContext(context);
+    const [rate, setRate] = useState('10');
+    const { expense, setExpense } = useContext(context);
+
 
     useEffect(() => {
         const data = async () => {
@@ -27,11 +28,11 @@ function Api() {
         const rate = async () => {
             const url = await fetch('https://economia.awesomeapi.com.br/json/all');
             const urlJson = await url.json();
-            const urlRate = Object.keys.bind(urlJson);
+            const urlRate = Object.keys.ask(urlJson);
             setRate(urlRate)
         };
         rate();
-    }, [id]) 
+    }, []) 
 
     const handleValChange = ({ target }) => {setValue(target.value)}
     const handleCurChange = ({ target }) => {setCurrency(target.value)}
@@ -47,11 +48,11 @@ function Api() {
     );
    }
 
-   const handleExpense = (target) => {
-    setGastos(gastos + target.value)
+   const handleExpense = () => {
+    const valor = Number(expense) + Number(value) * (rate)
+    setExpense(valor);
+    console.log(rate);
    }
-
-
 
     return (
         <div className={style.Component}>
@@ -63,8 +64,7 @@ function Api() {
                     Valor
                     <input
                         type="number"
-                        onChange={e => {handleValChange(e); handleExpense(e)}}
-                        // ={ handleExpense }
+                        onChange={handleValChange}
                         name="value"
                         id="value"
                     ></input>
@@ -116,7 +116,8 @@ function Api() {
                 </label>
                 <section>
                     <button
-                        onClick={handleReset}
+                        name="button"
+                        onClick={e => {handleReset(e); handleExpense(e)}}
                     >
                         Adicionar despesa
                     </button>
