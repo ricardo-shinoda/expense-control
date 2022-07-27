@@ -10,7 +10,7 @@ function Api() {
     const { tag, setTag } = useContext(context);
     const { currency, setCurrency } = useContext(context);
     const [currencies, setCurrencies] = useState([]);
-    const [rate, setRate] = useState('10');
+    const [rate, setRate] = useState([]);
     const { expense, setExpense } = useContext(context);
 
 
@@ -28,11 +28,11 @@ function Api() {
         const rate = async () => {
             const url = await fetch('https://economia.awesomeapi.com.br/json/all');
             const urlJson = await url.json();
-            const urlRate = Object.keys.ask(urlJson);
+            const urlRate = urlJson['CAD'].ask;
             setRate(urlRate)
         };
         rate();
-    }, []) 
+    }, [id]) 
 
     const handleValChange = ({ target }) => {setValue(target.value)}
     const handleCurChange = ({ target }) => {setCurrency(target.value)}
