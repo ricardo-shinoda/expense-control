@@ -4,9 +4,9 @@ import Context from '../context/Context';
 
 export default function Header() {
     const { email } = useContext(Context);
-    const { expense, setExpense } = useContext(Context)
-    const [currency, setCurrency] = useState('BRL')
-    const { rate, setRate } = useContext(Context);
+    const { expense } = useContext(Context)
+    const [currency] = useState('BRL')
+    const { rate } = useContext(Context);
 
 
 

@@ -5,9 +5,9 @@ import style from '../style/Component.module.css';
 function Api() {
     const { id, setId } = useContext(context);
     const { value, setValue } = useContext(context);
-    const { description, setDescription } = useContext(context);
-    const { method, setMethod } = useContext(context);
-    const { tag, setTag } = useContext(context);
+    const { setDescription } = useContext(context);
+    const { setMethod } = useContext(context);
+    const { setTag } = useContext(context);
     const { currency, setCurrency } = useContext(context);
     const [currencies, setCurrencies] = useState([]);
     const [rate, setRate] = useState([]);
@@ -52,6 +52,7 @@ function Api() {
     const valor = Number(expense) + Number(value) * (rate)
     setExpense(valor);
     console.log(rate);
+    console.log(currency);
    }
 
     return (

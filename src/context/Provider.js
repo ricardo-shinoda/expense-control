@@ -9,7 +9,7 @@ function Provider({ children }) {
     const [id, setId ] = useState(-1);
     const [value, setValue] = useState([]);
     const [description, setDescription] = useState([]);
-    const [currency, setCurrency] = useState(['USD']);
+    const [currency, setCurrency] = useState('USD');
     const [method, setMethod] = useState(['Dinheiro']);
     const [tag, setTag] = useState(['Alimentação']);
     const [expense, setExpense] = useState([]);
