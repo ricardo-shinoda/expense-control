@@ -28,11 +28,11 @@ function Api() {
         const rate = async () => {
             const url = await fetch('https://economia.awesomeapi.com.br/json/all');
             const urlJson = await url.json();
-            const urlRate = urlJson['CAD'].ask;
+            const urlRate = Number(urlJson[currency].ask);
             setRate(urlRate)
         };
         rate();
-    }, [id]) 
+    }); 
 
     const handleValChange = ({ target }) => {setValue(target.value)}
     const handleCurChange = ({ target }) => {setCurrency(target.value)}
@@ -49,7 +49,7 @@ function Api() {
    }
 
    const handleExpense = () => {
-    const valor = Number(expense) + Number(value) * (rate)
+    const valor = Number(expense) + Number(value) * (rate);
     setExpense(valor);
     console.log(rate);
     console.log(currency);
