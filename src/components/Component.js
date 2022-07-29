@@ -3,15 +3,17 @@ import context from '../context/Context';
 import style from '../style/Component.module.css';
 
 function Api() {
+    const { data } = useContext(context);
     const { id, setId } = useContext(context);
     const { value, setValue } = useContext(context);
-    const { setDescription } = useContext(context);
-    const { setMethod } = useContext(context);
-    const { setTag } = useContext(context);
+    const { description, setDescription } = useContext(context);
+    const { method, setMethod } = useContext(context);
+    const { tag, setTag } = useContext(context);
     const { currency, setCurrency } = useContext(context);
     const [currencies, setCurrencies] = useState([]);
     const [rate, setRate] = useState([]);
     const { expense, setExpense } = useContext(context);
+    const { table, setTable } = useContext(context);
 
 
     useEffect(() => {
@@ -32,28 +34,31 @@ function Api() {
             setRate(urlRate)
         };
         rate();
-    }); 
+    });
 
-    const handleValChange = ({ target }) => {setValue(target.value)}
-    const handleCurChange = ({ target }) => {setCurrency(target.value)}
-    const handleMetChange = ({ target }) => {setMethod(target.value)}
-    const handleCatChange = ({ target }) => {setTag(target.value)}
-    const handleDescChange = ({ target }) => {setDescription(target.value)}
+    const handleValChange = ({ target }) => { setValue(target.value) }
+    const handleCurChange = ({ target }) => { setCurrency(target.value) }
+    const handleMetChange = ({ target }) => { setMethod(target.value) }
+    const handleCatChange = ({ target }) => { setTag(target.value) }
+    const handleDescChange = ({ target }) => { setDescription(target.value) }
 
-   const handleReset = (e) => {
-    e.preventDefault();
-    setId(id + 1);
-    Array.from(document.querySelectorAll('input')).forEach(
-        input => (input.value = '')
-    );
-   }
+    const handleReset = (e) => {
+        e.preventDefault();
+        setId(id + 1);
+        Array.from(document.querySelectorAll('input')).forEach(
+            input => (input.value = '')
+        );
+    }
 
-   const handleExpense = () => {
-    const valor = Number(expense) + Number(value) * (rate);
-    setExpense(valor);
-    console.log(rate);
-    console.log(currency);
-   }
+    const handleExpense = () => {
+        const valor = Number(expense) + Number(value) * (rate);
+        setExpense(valor);
+        setTable([setId])
+        console.log(rate);
+        console.log(currency);
+        console.log(table);
+        console.log(`'the id is:' ${id}`)
+    }
 
     return (
         <div className={style.Component}>
@@ -118,7 +123,7 @@ function Api() {
                 <section>
                     <button
                         name="button"
-                        onClick={e => {handleReset(e); handleExpense(e)}}
+                        onClick={e => { handleReset(e); handleExpense(e) }}
                     >
                         Adicionar despesa
                     </button>
@@ -138,6 +143,21 @@ function Api() {
                         <th>Editar/Excluir</th>
                     </tr>
                 </thead>
+                <tbody>
+                    {table.map((exp, key) => (
+                        <tr key={key}>
+                            <td>{exp.description}</td>
+                            <td>{exp.tag}</td>
+                            <td>{exp.method}</td>
+                            <td>{exp.value}</td>
+                            <td>Real</td>
+                            <td>{exp.currency}</td>
+                            {/* <td>{value * currency.ask}</td> */}
+                            {/* <td>{rate.name}</td> */}
+                        </tr>
+                    ))
+                    }
+                </tbody>
             </table>
         </div>
     )

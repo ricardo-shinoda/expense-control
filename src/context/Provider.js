@@ -6,13 +6,14 @@ function Provider({ children }) {
     const [data, setData] = useState([]);
     const [email, setEmail] = useState([]);
     const [password, setPassword] = useState([]);
-    const [id, setId ] = useState(-1);
-    const [value, setValue] = useState([]);
-    const [description, setDescription] = useState([]);
+    const [id, setId ] = useState(0);
+    const [value, setValue] = useState(0);
+    const [description, setDescription] = useState('');
     const [currency, setCurrency] = useState('USD');
     const [method, setMethod] = useState(['Dinheiro']);
     const [tag, setTag] = useState(['Alimentação']);
     const [expense, setExpense] = useState([]);
+    const [ table, setTable ] = useState([id, value, description, currency, method, tag])
 
     const allData = {
         data, setData,
@@ -25,6 +26,7 @@ function Provider({ children }) {
         method, setMethod,
         tag, setTag,
         expense, setExpense,
+        table,
     }
 
     return (
