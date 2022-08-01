@@ -4,11 +4,12 @@
     color: black;
     background-color: white;
     border: solid 3px black;
-    margin: 350px;
+    margin: 100px;
     padding: 30px;
 }
 
 .title {
+    background-color: white;
     /* display: inline-block; */
     display: inline-block;
     padding-bottom: 20px;
@@ -16,13 +17,21 @@
     /* align-items: center; */
 }
 
+.div {
+    background-color: rgb(20, 44, 20);
+}
+
 .img {
+    background-color: white;
     display: flex;
     padding-bottom: 20px;
     /* align-content: center; */
 }
 
 .input {
+    justify-content: center;
+    align-items: center;
+    background-color: white;
     display: flex;
     margin: 10px;
     border-radius: 5px;

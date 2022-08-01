@@ -13,7 +13,8 @@ function Api() {
     const [currencies, setCurrencies] = useState([]);
     const [rate, setRate] = useState([]);
     const { expense, setExpense } = useContext(context);
-    const { table, setTable } = useContext(context);
+    // const { table, setTable } = useContext(context);
+    const [ table, setTable ] = useState([{id, value, description, currency, method, tag}])
 
 
     useEffect(() => {
@@ -53,11 +54,22 @@ function Api() {
     const handleExpense = () => {
         const valor = Number(expense) + Number(value) * (rate);
         setExpense(valor);
-        setTable([setId])
-        console.log(rate);
-        console.log(currency);
-        console.log(table);
-        console.log(`'the id is:' ${id}`)
+        setTable([setId]);
+        setTable([setDescription]);
+        setTable([setValue]);
+        setTable([setCurrency]);
+        setTable([setMethod]);
+        setTable([setTag]);
+        // console.log(rate);
+        // console.log(currency);
+        // console.log(table);
+        // console.log(`'the id is:' ${id}`)
+        // console.log(id)
+        // console.log(value)
+        // console.log(description)
+        // console.log(currency)
+        // console.log(method)
+        // console.log(tag)
     }
 
     return (
@@ -144,14 +156,14 @@ function Api() {
                     </tr>
                 </thead>
                 <tbody>
-                    {table.map((exp, key) => (
-                        <tr key={key}>
-                            <td>{exp.description}</td>
-                            <td>{exp.tag}</td>
-                            <td>{exp.method}</td>
-                            <td>{exp.value}</td>
-                            <td>Real</td>
-                            <td>{exp.currency}</td>
+                    {table.map(( {description} ) => (
+                        <tr key={description}>
+                            <td>{table.description}</td>
+                            {/* <td>{table=(tag)}</td> */}
+                            {/* <td>{exp.table=(method)}</td> */}
+                            {/* <td>{exp.table=(value)}</td> */}
+                            {/* <td>Real</td> */}
+                            {/* <td>{exp.table=(currency)}</td> */}
                             {/* <td>{value * currency.ask}</td> */}
                             {/* <td>{rate.name}</td> */}
                         </tr>

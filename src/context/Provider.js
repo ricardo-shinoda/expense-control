@@ -13,7 +13,7 @@ function Provider({ children }) {
     const [method, setMethod] = useState(['Dinheiro']);
     const [tag, setTag] = useState(['Alimentação']);
     const [expense, setExpense] = useState([]);
-    const [ table, setTable ] = useState([id, value, description, currency, method, tag])
+    // const [ table, setTable ] = useState([id, value, description, currency, method, tag])
 
     const allData = {
         data, setData,
@@ -26,7 +26,7 @@ function Provider({ children }) {
         method, setMethod,
         tag, setTag,
         expense, setExpense,
-        table,
+        // table,
     }
 
     return (
