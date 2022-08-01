@@ -27,7 +27,7 @@ function Login() {
         <div className="div">
             <form className={style.login}>
                 <h1 className={style.title}>Expense Control</h1>
-                <img className={style.img} height='60px' alt="imagem" src={image} />
+                <img className={style.img} height='40px' alt="imagem" src={image} />
                 <input
                     className={style.input}
                     type="email"
