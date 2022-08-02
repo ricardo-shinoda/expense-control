@@ -22,10 +22,6 @@
     background-color: white;
     display: inline-flex;
     padding-left: 10px;
-    /* padding-bottom: 20px; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* padding-left: 50%; */
 }
 
 .input {
@@ -61,7 +57,4 @@
 .button:hover {
     background-color: rgb(97, 179, 97);
     color: white;
-    /* margin: 5px 5px; */
-    /* font-size: large; */
-    /* width: 190px; */
 }

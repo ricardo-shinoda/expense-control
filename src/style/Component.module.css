@@ -1,4 +1,7 @@
 .Component {
-    background-color: rgb(20, 44, 20);
+    /* background-color: rgb(20, 44, 20); */
     color: rgb(238, 237, 164);
+}
+.input {
+    background-color: white;
 }

@@ -37,7 +37,7 @@ function Api() {
         rate();
     });
 
-    const handleValChange = ({ target }) => { setValue(target.value) }
+    // const handleValChange = ({ target }) => { setValue(target.value) }
     const handleCurChange = ({ target }) => { setCurrency(target.value) }
     const handleMetChange = ({ target }) => { setMethod(target.value) }
     const handleCatChange = ({ target }) => { setTag(target.value) }
@@ -74,23 +74,27 @@ function Api() {
 
     return (
         <div className={style.Component}>
-            <form>
+            <form className={ style.form }>
                 <label
                     htmlFor="value"
                     data-testid="value-input"
                 >
                     Valor
                     <input
+                        className={ style.input }
                         type="number"
-                        onChange={handleValChange}
+                        // onChange={handleValChange}
+                        onChange={(e) => setValue(e.target.value)}
                         name="value"
                         id="value"
                     ></input>
                 </label>
                 <label
+                    
                     htmlFor="currency"
                 >Moeda
                     <select
+                        className={ style.input }
                         onChange={handleCurChange}>
                         {currencies.map((cur) => <option key={cur}>{cur}</option>)}
                     </select>
@@ -101,7 +105,9 @@ function Api() {
                     onChange={handleMetChange}
                 >
                     Método de pagamento
-                    <select>
+                    <select
+                        className={ style.input }
+                    >
                         <option>Dinheiro</option>
                         <option>Cartão de crédito</option>
                         <option>Cartão de débito</option>
@@ -113,7 +119,9 @@ function Api() {
                     onChange={handleCatChange}
                 >
                     Categoria
-                    <select>
+                    <select
+                    className={ style.input }
+                    >
                         <option>Alimentação</option>
                         <option>Lazer</option>
                         <option>Trabalho</option>
@@ -128,12 +136,14 @@ function Api() {
                 >
                     Descrição
                     <input
+                        className={ style.input }
                         type="texto"
                     >
                     </input>
                 </label>
                 <section>
                     <button
+                        className={ style.input }
                         name="button"
                         onClick={e => { handleReset(e); handleExpense(e) }}
                     >
@@ -158,14 +168,14 @@ function Api() {
                 <tbody>
                     {table.map(( {description} ) => (
                         <tr key={description}>
-                            <td>{table.description}</td>
-                            {/* <td>{table=(tag)}</td> */}
-                            {/* <td>{exp.table=(method)}</td> */}
-                            {/* <td>{exp.table=(value)}</td> */}
-                            {/* <td>Real</td> */}
-                            {/* <td>{exp.table=(currency)}</td> */}
-                            {/* <td>{value * currency.ask}</td> */}
-                            {/* <td>{rate.name}</td> */}
+                            <td>{id}</td>
+                            <td>{tag}</td>
+                            <td>{method}</td>
+                            <td>{value}</td>
+                            <td>Real</td>
+                            <td>{currency}</td>
+                            <td>{value * currency.ask}</td>
+                            <td>{rate}</td>
                         </tr>
                     ))
                     }
