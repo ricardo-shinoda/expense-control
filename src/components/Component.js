@@ -14,7 +14,7 @@ function Api() {
     const [rate, setRate] = useState([]);
     const { expense, setExpense } = useContext(context);
     // const { table, setTable } = useContext(context);
-    const [ table, setTable ] = useState([{id, value, description, currency, method, tag}])
+    const [table, setTable] = useState([])
 
 
     useEffect(() => {
@@ -74,14 +74,14 @@ function Api() {
 
     return (
         <div className={style.Component}>
-            <form className={ style.form }>
+            <form className={style.form}>
                 <label
                     htmlFor="value"
                     data-testid="value-input"
                 >
                     Valor
                     <input
-                        className={ style.input }
+                        className={style.input}
                         type="number"
                         // onChange={handleValChange}
                         onChange={(e) => setValue(e.target.value)}
@@ -90,11 +90,11 @@ function Api() {
                     ></input>
                 </label>
                 <label
-                    
+
                     htmlFor="currency"
                 >Moeda
                     <select
-                        className={ style.input }
+                        className={style.input}
                         onChange={handleCurChange}>
                         {currencies.map((cur) => <option key={cur}>{cur}</option>)}
                     </select>
@@ -106,7 +106,7 @@ function Api() {
                 >
                     Método de pagamento
                     <select
-                        className={ style.input }
+                        className={style.input}
                     >
                         <option>Dinheiro</option>
                         <option>Cartão de crédito</option>
@@ -120,7 +120,7 @@ function Api() {
                 >
                     Categoria
                     <select
-                    className={ style.input }
+                        className={style.input}
                     >
                         <option>Alimentação</option>
                         <option>Lazer</option>
@@ -136,16 +136,16 @@ function Api() {
                 >
                     Descrição
                     <input
-                        className={ style.input }
+                        className={style.input}
                         type="texto"
                     >
                     </input>
                 </label>
                 <section>
                     <button
-                        className={ style.input }
+                        className={style.input}
                         name="button"
-                        onClick={e => { handleReset(e); handleExpense(e) }}
+                        onClick={e => { handleReset(e); handleExpense() }}
                     >
                         Adicionar despesa
                     </button>
@@ -166,22 +166,21 @@ function Api() {
                     </tr>
                 </thead>
                 <tbody>
-                    {table.map(( {description} ) => (
-                        <tr key={description}>
+                    {table.map((user) => (
+                        <tr>
                             <td>{id}</td>
                             <td>{tag}</td>
                             <td>{method}</td>
-                            <td>{value}</td>
+                            <td>{ Number(value).toFixed(2) }</td>
                             <td>Real</td>
                             <td>{currency}</td>
-                            <td>{value * currency.ask}</td>
+                            <td>{value * rate}</td>
                             <td>{rate}</td>
                         </tr>
-                    ))
-                    }
-                </tbody>
-            </table>
-        </div>
+))}
+            </tbody>
+        </table>
+        </div >
     )
 };
 
