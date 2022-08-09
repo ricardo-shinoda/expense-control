@@ -42,6 +42,7 @@ function Api() {
     const handleMetChange = ({ target }) => { setMethod(target.value) }
     const handleCatChange = ({ target }) => { setTag(target.value) }
     const handleDescChange = ({ target }) => { setDescription(target.value) }
+    // const handleValue = ({ target }) => { setValue(...value, target.value) }
 
     const handleReset = (e) => {
         e.preventDefault();
@@ -54,18 +55,18 @@ function Api() {
     const handleExpense = () => {
         const valor = Number(expense) + Number(value) * (rate);
         setExpense(valor);
-        setTable([setId]);
-        setTable([setDescription]);
-        setTable([setValue]);
-        setTable([setCurrency]);
-        setTable([setMethod]);
-        setTable([setTag]);
+        // setTable([...id, setId]);
+        // setTable([...description, setDescription]);
+        setTable([...value]);
+        // setTable([...currency, setCurrency]);
+        // setTable([...method, setMethod]);
+        // setTable([...tag, setTag]);
         // console.log(rate);
         // console.log(currency);
         // console.log(table);
         // console.log(`'the id is:' ${id}`)
         // console.log(id)
-        // console.log(value)
+        console.log(`This is the VALOR: ${value}`)
         // console.log(description)
         // console.log(currency)
         // console.log(method)
@@ -167,14 +168,14 @@ function Api() {
                 </thead>
                 <tbody>
                     {table.map((user) => (
-                        <tr>
+                        <tr key={user.id}>
                             <td>{id}</td>
                             <td>{tag}</td>
                             <td>{method}</td>
                             <td>{ Number(value).toFixed(2) }</td>
                             <td>Real</td>
                             <td>{currency}</td>
-                            <td>{value * rate}</td>
+                            <td>{ Number(value * rate).toFixed(2) }</td>
                             <td>{rate}</td>
                         </tr>
 ))}
