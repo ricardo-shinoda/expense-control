@@ -2,4 +2,4 @@
 #### In this project I will be using CSS, Javascript, React and Context API. I will also be using an API to access the exchange rate.
 
 ## how to run:
-### npm run dev
+### npm run start
